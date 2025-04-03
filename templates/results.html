@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Prediction Results</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+    <h1 class="text-center">F1 2025 Japanese GP Predictions</h1>
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                <th>Position</th>
+                <th>Driver</th>
+                <th>Team</th>
+                <th>Predicted Q3 Time (s)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in predictions.itertuples() %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ row.Driver }}</td>
+                <td>{{ row.Team }}</td>
+                <td>{{ "%.3f" | format(row.Predicted_Q3) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/" class="btn btn-secondary">Back to Home</a>
+</body>
+</html>
