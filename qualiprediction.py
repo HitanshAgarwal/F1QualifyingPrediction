@@ -73,45 +73,46 @@ def apply_performance_factors(predictions_df):
     team_factors = {
         'McLaren': 0.997,          # -0.3s from base
         'Ferrari': 0.998,          # -0.2s from base
-        'Red Bull Racing': 0.999,  # -0.1s from base
+        'Red Bull Racing': 1.000,  # -0.1s from base
         'Mercedes': 0.999,         # -0.1s from base
         'Aston Martin': 1.002,     # +0.1s from base
         'RB': 1.002,               # +0.2s from base
         'Alpine': 1.003,           # +0.3s from base
         'Williams': 1.003,         # +0.3s from base
-        'Haas F1 Team': 1.004,     # +0.4s from base
+        'Haas F1 Team': 1.003,     # +0.4s from base
         'Kick Sauber': 1.005,      # +0.5s from base
     }
     driver_factors = {
-        'Lando Norris': 0.998,
+        'Lando Norris': 0.999,
         'Oscar Piastri': 0.999,
         'Lewis Hamilton': 0.999,
         'Charles Leclerc': 0.999,
         'Max Verstappen': 0.998,
-        'Yuki Tsunoda': 1.002,
+        'Yuki Tsunoda': 1.001,
         'George Russell': 0.999,
         'Kimi Antonelli': 1.002,
         'Fernando Alonso': 1.000,
         'Lance Stroll': 1.003,
         'Liam Lawson': 1.004,
         'Isaac Hadjar': 1.004,
-        'Pierre Gasly': 1.002,
+        'Pierre Gasly': 1.001,
         'Jack Doohan': 1.004,
         'Alex Albon': 1.001,
         'Carlos Sainz': 1.000,
         'Oliver Bearman': 1.003,
         'Esteban Ocon': 1.003,
         'Nico Hulkenberg': 1.000,
-        'Gabriel Bortoleto': 1.004
+        'Gabriel Bortoleto': 1.003
     }
     for idx, row in predictions_df.iterrows():
         team_factor = team_factors.get(row['Team'], 1.005)
         driver_factor = driver_factors.get(row['Driver'], 1.002)
+
         base_prediction = base_time * team_factor * driver_factor
         predictions_df.loc[idx, 'Predicted_Q3'] = base_prediction + np.random.uniform(-0.1, 0.1)
     return predictions_df
 
-def predict_japanese_gp(model, latest_data):
+def predict_gp(model, latest_data):
     driver_teams = {
         'Lando Norris': 'McLaren',
         'Oscar Piastri': 'McLaren',
@@ -145,7 +146,7 @@ def home():
 
 @app.route('/predict', methods=['GET'])
 def predict():
-    all_data = [fetch_f1_data(2025, i) for i in range(1, 5)]
+    all_data = [fetch_f1_data(2025, i) for i in range(1, 24)]
     all_data = [df for df in all_data if df is not None]
     if all_data:
         combined_df = pd.concat(all_data, ignore_index=True)
@@ -155,7 +156,7 @@ def predict():
         y_clean = pd.Series(imputer.fit_transform(valid_data['Q3_sec'].values.reshape(-1, 1)).ravel())
         model = RandomForestRegressor(n_estimators=100, random_state=42)
         model.fit(X_clean, y_clean)
-        predictions= predict_japanese_gp(model, valid_data)
+        predictions= predict_gp(model, valid_data)
         y_pred = model.predict(X_clean)
         print("\nModel Performance Metrics:")
         print(f'Mean Absolute Error: {mean_absolute_error(y_clean, y_pred):.2f} seconds')
