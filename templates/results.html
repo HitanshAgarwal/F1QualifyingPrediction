@@ -5,27 +5,147 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>F1 Prediction Results</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .position-1 { background-color: #ffd700; font-weight: bold; }
+        .position-2 { background-color: #c0c0c0; font-weight: bold; }
+        .position-3 { background-color: #cd7f32; font-weight: bold; }
+        .q3-position { background-color: #e8f5e9; }
+
+        .table-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.3);
+        }
+
+        .race-header {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .race-name {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .race-location {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .race-date {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body class="container mt-5">
-    <h1 class="text-center">F1 2025 Qualifying Predictions</h1>
-    <table class="table table-striped mt-4">
-        <thead>
-            <tr>
-                <th>Position</th>
-                <th>Driver</th>
-                <th>Team</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in predictions.itertuples() %}
-            <tr>
-                <td>{{ loop.index }}</td>
-                <td>{{ row.Driver }}</td>
-                <td>{{ row.Team }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <a href="/" class="btn btn-secondary">Back to Home</a>
+    <div class="table-container">
+        <div class="race-header" id="raceHeader">
+            <div class="race-name" id="raceName">F1 2025 Qualifying Predictions</div>
+            <div class="race-location" id="raceLocation"></div>
+            <div class="race-date" id="raceDate"></div>
+        </div>
+
+        <p class="text-center text-muted mb-4">Powered by Machine Learning with Enhanced Feature Engineering</p>
+
+        <table class="table table-hover mt-4" id="predictionsTable">
+            <thead class="table-dark">
+                <tr>
+                    <th>Position</th>
+                    <th>Driver</th>
+                    <th>Team</th>
+                    <th>Predicted Q3 Time</th>
+                </tr>
+            </thead>
+            <tbody id="predictionsBody">
+                <!-- Will be populated by JavaScript -->
+            </tbody>
+        </table>
+
+        <div class="alert alert-info mt-4">
+            <h5>How These Predictions Work:</h5>
+            <ul>
+                <li>Analyzes each driver's recent qualifying performance</li>
+                <li>Considers team car speed from past races</li>
+                <li>Uses machine learning trained on 2024-2025 data</li>
+                <li>Accounts for driver consistency and improvement trends</li>
+                <li>Note: Predictions are estimates based on past performance</li>
+            </ul>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-primary">New Prediction</a>
+        </div>
+    </div>
+
+    <script>
+        // Load predictions from sessionStorage
+        const predictions = JSON.parse(sessionStorage.getItem('predictions') || '[]');
+        const raceInfo = JSON.parse(sessionStorage.getItem('race_info') || '{}');
+
+        // Display race information
+        if (raceInfo.name) {
+            document.getElementById('raceName').textContent = raceInfo.name;
+
+            if (raceInfo.location) {
+                document.getElementById('raceLocation').textContent = raceInfo.location;
+            }
+
+            if (raceInfo.date) {
+                const date = new Date(raceInfo.date);
+                document.getElementById('raceDate').textContent = date.toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+            }
+        }
+
+        // Populate predictions table
+        const tbody = document.getElementById('predictionsBody');
+        predictions.forEach((prediction, index) => {
+            const row = document.createElement('tr');
+
+            // Add position-based classes
+            let rowClass = '';
+            if (prediction.Position === 1) rowClass = 'position-1';
+            else if (prediction.Position === 2) rowClass = 'position-2';
+            else if (prediction.Position === 3) rowClass = 'position-3';
+            else if (prediction.Position <= 10) rowClass = 'q3-position';
+
+            row.className = rowClass;
+
+            row.innerHTML = `
+                <td><strong>${prediction.Position}</strong></td>
+                <td>${prediction.Driver}</td>
+                <td>${prediction.Team}</td>
+                <td>${prediction.Predicted_Q3.toFixed(3)}s</td>
+            `;
+
+            tbody.appendChild(row);
+        });
+
+        // If no predictions, show fallback message
+        if (predictions.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="4" class="text-center">No predictions available. Please run the prediction again.</td></tr>';
+        }
+    </script>
 </body>
 </html>

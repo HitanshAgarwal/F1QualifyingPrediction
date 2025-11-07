@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Predictions - F1 Qualifying</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .loading-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        .spinner {
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 30px auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .status-message {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            min-height: 60px;
+            font-weight: 500;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00f260, #0575e6);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .race-info {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .checkered-flag {
+            font-size: 3rem;
+            animation: wave 2s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            font-size: 1.1rem;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <div class="checkered-flag">🏁</div>
+        <h1>F1 Qualifying Predictor</h1>
+        <div class="race-info" id="raceInfo">Preparing Analysis...</div>
+
+        <div class="spinner" id="spinner"></div>
+
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="status-message" id="statusMessage">Initializing...</div>
+
+        <div class="error-message" id="errorMessage" style="display: none;"></div>
+    </div>
+
+    <script>
+        const eventSource = new EventSource('/predict_stream');
+        const statusMessage = document.getElementById('statusMessage');
+        const progressBar = document.getElementById('progressBar');
+        const spinner = document.getElementById('spinner');
+        const raceInfo = document.getElementById('raceInfo');
+        const errorMessage = document.getElementById('errorMessage');
+
+        let progress = 0;
+        let totalSteps = 50; // Approximate total rounds to load
+        let currentStep = 0;
+
+        eventSource.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+
+            if (data.status === 'loading') {
+                currentStep++;
+                progress = (currentStep / totalSteps) * 60; // 60% for loading
+                progressBar.style.width = progress + '%';
+                statusMessage.textContent = data.message;
+            }
+            else if (data.status === 'processing') {
+                progress = 65;
+                progressBar.style.width = progress + '%';
+                statusMessage.textContent = data.message;
+            }
+            else if (data.status === 'training') {
+                progress = 75;
+                progressBar.style.width = progress + '%';
+                statusMessage.textContent = data.message;
+            }
+            else if (data.status === 'predicting') {
+                progress = 90;
+                progressBar.style.width = progress + '%';
+                statusMessage.textContent = data.message;
+                if (data.message.includes('for')) {
+                    // Extract race name from message
+                    raceInfo.textContent = data.message.replace('Generating predictions for ', '');
+                }
+            }
+            else if (data.status === 'complete') {
+                progress = 100;
+                progressBar.style.width = progress + '%';
+                statusMessage.textContent = 'Complete! Redirecting...';
+
+                // Store predictions in sessionStorage
+                sessionStorage.setItem('predictions', JSON.stringify(data.predictions));
+                sessionStorage.setItem('race_info', JSON.stringify(data.race_info));
+
+                // Redirect to results page
+                setTimeout(() => {
+                    window.location.href = '/results';
+                }, 1000);
+
+                eventSource.close();
+            }
+            else if (data.status === 'error') {
+                spinner.style.display = 'none';
+                errorMessage.textContent = data.message;
+                errorMessage.style.display = 'block';
+                statusMessage.textContent = 'An error occurred';
+                eventSource.close();
+            }
+            else if (data.status === 'starting') {
+                statusMessage.textContent = data.message;
+                progress = 5;
+                progressBar.style.width = progress + '%';
+            }
+        };
+
+        eventSource.onerror = function() {
+            spinner.style.display = 'none';
+            errorMessage.textContent = 'Connection lost. Please try again.';
+            errorMessage.style.display = 'block';
+            statusMessage.textContent = 'Error';
+            eventSource.close();
+        };
+    </script>
+</body>
+</html>
