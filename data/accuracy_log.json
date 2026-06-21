@@ -1,0 +1,866 @@
+[
+  {
+    "race": "Austrian Grand Prix",
+    "year": 2026,
+    "round": 8,
+    "timestamp": "2026-06-21T14:24:40.061079",
+    "model_mae": 0.279,
+    "model_rmse": 0.472,
+    "model_r2": 0.998,
+    "predictions": [
+      {
+        "Driver": "Arvid Lindblad",
+        "Team": "Racing Bulls",
+        "Position": 1,
+        "Predicted_Q3": 79.85523223876953
+      },
+      {
+        "Driver": "Isack Hadjar",
+        "Team": "Red Bull Racing",
+        "Position": 2,
+        "Predicted_Q3": 80.13055419921875
+      },
+      {
+        "Driver": "Lewis Hamilton",
+        "Team": "Ferrari",
+        "Position": 3,
+        "Predicted_Q3": 81.39153289794922
+      },
+      {
+        "Driver": "Kimi Antonelli",
+        "Team": "Mercedes",
+        "Position": 4,
+        "Predicted_Q3": 81.4211196899414
+      },
+      {
+        "Driver": "Oscar Piastri",
+        "Team": "McLaren",
+        "Position": 5,
+        "Predicted_Q3": 81.46170806884766
+      },
+      {
+        "Driver": "Lando Norris",
+        "Team": "McLaren",
+        "Position": 6,
+        "Predicted_Q3": 81.52159881591797
+      },
+      {
+        "Driver": "Charles Leclerc",
+        "Team": "Ferrari",
+        "Position": 7,
+        "Predicted_Q3": 81.53279876708984
+      },
+      {
+        "Driver": "George Russell",
+        "Team": "Mercedes",
+        "Position": 8,
+        "Predicted_Q3": 81.62920379638672
+      },
+      {
+        "Driver": "Max Verstappen",
+        "Team": "Red Bull Racing",
+        "Position": 9,
+        "Predicted_Q3": 81.6467514038086
+      },
+      {
+        "Driver": "Oliver Bearman",
+        "Team": "Haas F1 Team",
+        "Position": 10,
+        "Predicted_Q3": 81.69283294677734
+      },
+      {
+        "Driver": "Pierre Gasly",
+        "Team": "Alpine",
+        "Position": 11,
+        "Predicted_Q3": 81.81541442871094
+      },
+      {
+        "Driver": "Gabriel Bortoleto",
+        "Team": "Audi",
+        "Position": 12,
+        "Predicted_Q3": 81.89071655273438
+      },
+      {
+        "Driver": "Nico Hulkenberg",
+        "Team": "Audi",
+        "Position": 13,
+        "Predicted_Q3": 81.92085266113281
+      },
+      {
+        "Driver": "Liam Lawson",
+        "Team": "Racing Bulls",
+        "Position": 14,
+        "Predicted_Q3": 81.99134063720703
+      },
+      {
+        "Driver": "Franco Colapinto",
+        "Team": "Alpine",
+        "Position": 15,
+        "Predicted_Q3": 82.01490783691406
+      },
+      {
+        "Driver": "Carlos Sainz",
+        "Team": "Williams",
+        "Position": 16,
+        "Predicted_Q3": 82.33839416503906
+      },
+      {
+        "Driver": "Valtteri Bottas",
+        "Team": "Cadillac",
+        "Position": 17,
+        "Predicted_Q3": 82.51679992675781
+      },
+      {
+        "Driver": "Alexander Albon",
+        "Team": "Williams",
+        "Position": 18,
+        "Predicted_Q3": 82.51775360107422
+      },
+      {
+        "Driver": "Sergio Perez",
+        "Team": "Cadillac",
+        "Position": 19,
+        "Predicted_Q3": 82.52141571044922
+      },
+      {
+        "Driver": "Fernando Alonso",
+        "Team": "Aston Martin",
+        "Position": 20,
+        "Predicted_Q3": 82.576171875
+      },
+      {
+        "Driver": "Lance Stroll",
+        "Team": "Aston Martin",
+        "Position": 21,
+        "Predicted_Q3": 82.6474838256836
+      },
+      {
+        "Driver": "Esteban Ocon",
+        "Team": "Haas F1 Team",
+        "Position": 22,
+        "Predicted_Q3": 87.12400817871094
+      }
+    ],
+    "actual_results": null
+  },
+  {
+    "race": "Austrian Grand Prix",
+    "year": 2026,
+    "round": 8,
+    "timestamp": "2026-06-21T14:30:55.571474",
+    "model_mae": 0.248,
+    "model_rmse": 0.345,
+    "model_r2": 0.241,
+    "predictions": [
+      {
+        "Driver": "Oscar Piastri",
+        "Team": "McLaren",
+        "Position": 1,
+        "Predicted_Q3": 64.7154276970029
+      },
+      {
+        "Driver": "Isack Hadjar",
+        "Team": "Red Bull Racing",
+        "Position": 2,
+        "Predicted_Q3": 64.72153024278283
+      },
+      {
+        "Driver": "Lando Norris",
+        "Team": "McLaren",
+        "Position": 3,
+        "Predicted_Q3": 64.73635900335908
+      },
+      {
+        "Driver": "George Russell",
+        "Team": "Mercedes",
+        "Position": 4,
+        "Predicted_Q3": 64.74208618646264
+      },
+      {
+        "Driver": "Lewis Hamilton",
+        "Team": "Ferrari",
+        "Position": 5,
+        "Predicted_Q3": 64.74208618646264
+      },
+      {
+        "Driver": "Kimi Antonelli",
+        "Team": "Mercedes",
+        "Position": 6,
+        "Predicted_Q3": 64.74208618646264
+      },
+      {
+        "Driver": "Max Verstappen",
+        "Team": "Red Bull Racing",
+        "Position": 7,
+        "Predicted_Q3": 64.88457695419193
+      },
+      {
+        "Driver": "Pierre Gasly",
+        "Team": "Alpine",
+        "Position": 8,
+        "Predicted_Q3": 64.93578493663072
+      },
+      {
+        "Driver": "Charles Leclerc",
+        "Team": "Ferrari",
+        "Position": 9,
+        "Predicted_Q3": 64.95174365495444
+      },
+      {
+        "Driver": "Alexander Albon",
+        "Team": "Williams",
+        "Position": 10,
+        "Predicted_Q3": 64.99232152118684
+      },
+      {
+        "Driver": "Carlos Sainz",
+        "Team": "Williams",
+        "Position": 11,
+        "Predicted_Q3": 64.99232152118684
+      },
+      {
+        "Driver": "Nico Hulkenberg",
+        "Team": "Audi",
+        "Position": 12,
+        "Predicted_Q3": 64.99342826062441
+      },
+      {
+        "Driver": "Gabriel Bortoleto",
+        "Team": "Audi",
+        "Position": 13,
+        "Predicted_Q3": 65.00297872542143
+      },
+      {
+        "Driver": "Liam Lawson",
+        "Team": "Racing Bulls",
+        "Position": 14,
+        "Predicted_Q3": 65.03477233108282
+      },
+      {
+        "Driver": "Franco Colapinto",
+        "Team": "Alpine",
+        "Position": 15,
+        "Predicted_Q3": 65.03628152122498
+      },
+      {
+        "Driver": "Arvid Lindblad",
+        "Team": "Racing Bulls",
+        "Position": 16,
+        "Predicted_Q3": 65.03712511981726
+      },
+      {
+        "Driver": "Oliver Bearman",
+        "Team": "Haas F1 Team",
+        "Position": 17,
+        "Predicted_Q3": 65.03759722545148
+      },
+      {
+        "Driver": "Esteban Ocon",
+        "Team": "Haas F1 Team",
+        "Position": 18,
+        "Predicted_Q3": 65.03991131700278
+      },
+      {
+        "Driver": "Lance Stroll",
+        "Team": "Aston Martin",
+        "Position": 19,
+        "Predicted_Q3": 65.08969911282063
+      },
+      {
+        "Driver": "Fernando Alonso",
+        "Team": "Aston Martin",
+        "Position": 20,
+        "Predicted_Q3": 65.09234600014688
+      },
+      {
+        "Driver": "Valtteri Bottas",
+        "Team": "Cadillac",
+        "Position": 21,
+        "Predicted_Q3": 65.0928490635276
+      },
+      {
+        "Driver": "Sergio Perez",
+        "Team": "Cadillac",
+        "Position": 22,
+        "Predicted_Q3": 65.09549595085383
+      }
+    ],
+    "actual_results": null
+  },
+  {
+    "race": "Austrian Grand Prix",
+    "year": 2026,
+    "round": 8,
+    "timestamp": "2026-06-21T14:52:11.255018",
+    "model_mae": 0.456,
+    "model_rmse": 0.608,
+    "model_r2": 0.996,
+    "predictions": [
+      {
+        "Driver": "Oscar Piastri",
+        "Team": "McLaren",
+        "Position": 1,
+        "Predicted_Q3": 64.75893251244639
+      },
+      {
+        "Driver": "Lando Norris",
+        "Team": "McLaren",
+        "Position": 2,
+        "Predicted_Q3": 64.89130240209755
+      },
+      {
+        "Driver": "Kimi Antonelli",
+        "Team": "Mercedes",
+        "Position": 3,
+        "Predicted_Q3": 64.90151834239244
+      },
+      {
+        "Driver": "Max Verstappen",
+        "Team": "Red Bull Racing",
+        "Position": 4,
+        "Predicted_Q3": 64.92840800626985
+      },
+      {
+        "Driver": "Esteban Ocon",
+        "Team": "Haas F1 Team",
+        "Position": 5,
+        "Predicted_Q3": 64.93714609089233
+      },
+      {
+        "Driver": "Lewis Hamilton",
+        "Team": "Ferrari",
+        "Position": 6,
+        "Predicted_Q3": 64.95278869301347
+      },
+      {
+        "Driver": "Franco Colapinto",
+        "Team": "Alpine",
+        "Position": 7,
+        "Predicted_Q3": 64.99769471959969
+      },
+      {
+        "Driver": "Charles Leclerc",
+        "Team": "Ferrari",
+        "Position": 8,
+        "Predicted_Q3": 65.05667700478081
+      },
+      {
+        "Driver": "Nico Hulkenberg",
+        "Team": "Audi",
+        "Position": 9,
+        "Predicted_Q3": 65.10088608582733
+      },
+      {
+        "Driver": "Liam Lawson",
+        "Team": "Racing Bulls",
+        "Position": 10,
+        "Predicted_Q3": 65.1366805377443
+      },
+      {
+        "Driver": "Isack Hadjar",
+        "Team": "Red Bull Racing",
+        "Position": 11,
+        "Predicted_Q3": 65.19703645972228
+      },
+      {
+        "Driver": "Pierre Gasly",
+        "Team": "Alpine",
+        "Position": 12,
+        "Predicted_Q3": 65.23592785247526
+      },
+      {
+        "Driver": "George Russell",
+        "Team": "Mercedes",
+        "Position": 13,
+        "Predicted_Q3": 65.24773468163546
+      },
+      {
+        "Driver": "Carlos Sainz",
+        "Team": "Williams",
+        "Position": 14,
+        "Predicted_Q3": 65.278404361025
+      },
+      {
+        "Driver": "Alexander Albon",
+        "Team": "Williams",
+        "Position": 15,
+        "Predicted_Q3": 65.32151772318215
+      },
+      {
+        "Driver": "Oliver Bearman",
+        "Team": "Haas F1 Team",
+        "Position": 16,
+        "Predicted_Q3": 65.34032306739373
+      },
+      {
+        "Driver": "Gabriel Bortoleto",
+        "Team": "Audi",
+        "Position": 17,
+        "Predicted_Q3": 65.363107228756
+      },
+      {
+        "Driver": "Arvid Lindblad",
+        "Team": "Racing Bulls",
+        "Position": 18,
+        "Predicted_Q3": 66.03080808065457
+      },
+      {
+        "Driver": "Lance Stroll",
+        "Team": "Aston Martin",
+        "Position": 19,
+        "Predicted_Q3": 70.89140480681579
+      },
+      {
+        "Driver": "Fernando Alonso",
+        "Team": "Aston Martin",
+        "Position": 20,
+        "Predicted_Q3": 70.94714097146097
+      },
+      {
+        "Driver": "Valtteri Bottas",
+        "Team": "Cadillac",
+        "Position": 21,
+        "Predicted_Q3": 71.05649494568853
+      },
+      {
+        "Driver": "Sergio Perez",
+        "Team": "Cadillac",
+        "Position": 22,
+        "Predicted_Q3": 71.05772122166154
+      }
+    ],
+    "actual_results": null
+  },
+  {
+    "race": "Austrian Grand Prix",
+    "year": 2026,
+    "round": 8,
+    "timestamp": "2026-06-21T14:55:04.808570",
+    "model_mae": 0.456,
+    "model_rmse": 0.608,
+    "model_r2": 0.996,
+    "predictions": [
+      {
+        "Driver": "Oscar Piastri",
+        "Team": "McLaren",
+        "Position": 1,
+        "Predicted_Q3": 64.75893251244639
+      },
+      {
+        "Driver": "Lando Norris",
+        "Team": "McLaren",
+        "Position": 2,
+        "Predicted_Q3": 64.89130240209755
+      },
+      {
+        "Driver": "Kimi Antonelli",
+        "Team": "Mercedes",
+        "Position": 3,
+        "Predicted_Q3": 64.90151834239244
+      },
+      {
+        "Driver": "Max Verstappen",
+        "Team": "Red Bull Racing",
+        "Position": 4,
+        "Predicted_Q3": 64.92840800626985
+      },
+      {
+        "Driver": "Esteban Ocon",
+        "Team": "Haas F1 Team",
+        "Position": 5,
+        "Predicted_Q3": 64.93714609089233
+      },
+      {
+        "Driver": "Lewis Hamilton",
+        "Team": "Ferrari",
+        "Position": 6,
+        "Predicted_Q3": 64.95278869301347
+      },
+      {
+        "Driver": "Franco Colapinto",
+        "Team": "Alpine",
+        "Position": 7,
+        "Predicted_Q3": 64.99769471959969
+      },
+      {
+        "Driver": "Charles Leclerc",
+        "Team": "Ferrari",
+        "Position": 8,
+        "Predicted_Q3": 65.05667700478081
+      },
+      {
+        "Driver": "Nico Hulkenberg",
+        "Team": "Audi",
+        "Position": 9,
+        "Predicted_Q3": 65.10088608582733
+      },
+      {
+        "Driver": "Liam Lawson",
+        "Team": "Racing Bulls",
+        "Position": 10,
+        "Predicted_Q3": 65.1366805377443
+      },
+      {
+        "Driver": "Isack Hadjar",
+        "Team": "Red Bull Racing",
+        "Position": 11,
+        "Predicted_Q3": 65.19703645972228
+      },
+      {
+        "Driver": "Pierre Gasly",
+        "Team": "Alpine",
+        "Position": 12,
+        "Predicted_Q3": 65.23592785247526
+      },
+      {
+        "Driver": "George Russell",
+        "Team": "Mercedes",
+        "Position": 13,
+        "Predicted_Q3": 65.24773468163546
+      },
+      {
+        "Driver": "Carlos Sainz",
+        "Team": "Williams",
+        "Position": 14,
+        "Predicted_Q3": 65.278404361025
+      },
+      {
+        "Driver": "Alexander Albon",
+        "Team": "Williams",
+        "Position": 15,
+        "Predicted_Q3": 65.32151772318215
+      },
+      {
+        "Driver": "Oliver Bearman",
+        "Team": "Haas F1 Team",
+        "Position": 16,
+        "Predicted_Q3": 65.34032306739373
+      },
+      {
+        "Driver": "Gabriel Bortoleto",
+        "Team": "Audi",
+        "Position": 17,
+        "Predicted_Q3": 65.363107228756
+      },
+      {
+        "Driver": "Arvid Lindblad",
+        "Team": "Racing Bulls",
+        "Position": 18,
+        "Predicted_Q3": 66.03080808065457
+      },
+      {
+        "Driver": "Lance Stroll",
+        "Team": "Aston Martin",
+        "Position": 19,
+        "Predicted_Q3": 70.89140480681579
+      },
+      {
+        "Driver": "Fernando Alonso",
+        "Team": "Aston Martin",
+        "Position": 20,
+        "Predicted_Q3": 70.94714097146097
+      },
+      {
+        "Driver": "Valtteri Bottas",
+        "Team": "Cadillac",
+        "Position": 21,
+        "Predicted_Q3": 71.05649494568853
+      },
+      {
+        "Driver": "Sergio Perez",
+        "Team": "Cadillac",
+        "Position": 22,
+        "Predicted_Q3": 71.05772122166154
+      }
+    ],
+    "actual_results": null
+  },
+  {
+    "race": "Austrian Grand Prix",
+    "year": 2026,
+    "round": 8,
+    "timestamp": "2026-06-21T15:03:46.025882",
+    "model_mae": 0.454,
+    "model_rmse": 0.606,
+    "model_r2": 0.996,
+    "predictions": [
+      {
+        "Driver": "Franco Colapinto",
+        "Team": "Alpine",
+        "Position": 1,
+        "Predicted_Q3": 65.11625725933855
+      },
+      {
+        "Driver": "Esteban Ocon",
+        "Team": "Haas F1 Team",
+        "Position": 2,
+        "Predicted_Q3": 65.13539895162998
+      },
+      {
+        "Driver": "Kimi Antonelli",
+        "Team": "Mercedes",
+        "Position": 3,
+        "Predicted_Q3": 65.15781680328611
+      },
+      {
+        "Driver": "Lando Norris",
+        "Team": "McLaren",
+        "Position": 4,
+        "Predicted_Q3": 65.17338517388143
+      },
+      {
+        "Driver": "Oscar Piastri",
+        "Team": "McLaren",
+        "Position": 5,
+        "Predicted_Q3": 65.17753899348916
+      },
+      {
+        "Driver": "Max Verstappen",
+        "Team": "Red Bull Racing",
+        "Position": 6,
+        "Predicted_Q3": 65.20716876964937
+      },
+      {
+        "Driver": "Lewis Hamilton",
+        "Team": "Ferrari",
+        "Position": 7,
+        "Predicted_Q3": 65.22805331465356
+      },
+      {
+        "Driver": "Charles Leclerc",
+        "Team": "Ferrari",
+        "Position": 8,
+        "Predicted_Q3": 65.28857707258632
+      },
+      {
+        "Driver": "Liam Lawson",
+        "Team": "Racing Bulls",
+        "Position": 9,
+        "Predicted_Q3": 65.3551425769928
+      },
+      {
+        "Driver": "Nico Hulkenberg",
+        "Team": "Audi",
+        "Position": 10,
+        "Predicted_Q3": 65.375982756718
+      },
+      {
+        "Driver": "Pierre Gasly",
+        "Team": "Alpine",
+        "Position": 11,
+        "Predicted_Q3": 65.39474387264323
+      },
+      {
+        "Driver": "George Russell",
+        "Team": "Mercedes",
+        "Position": 12,
+        "Predicted_Q3": 65.44415573243992
+      },
+      {
+        "Driver": "Isack Hadjar",
+        "Team": "Red Bull Racing",
+        "Position": 13,
+        "Predicted_Q3": 65.44561211894732
+      },
+      {
+        "Driver": "Gabriel Bortoleto",
+        "Team": "Audi",
+        "Position": 14,
+        "Predicted_Q3": 65.4699765170616
+      },
+      {
+        "Driver": "Oliver Bearman",
+        "Team": "Haas F1 Team",
+        "Position": 15,
+        "Predicted_Q3": 65.47844303029693
+      },
+      {
+        "Driver": "Carlos Sainz",
+        "Team": "Williams",
+        "Position": 16,
+        "Predicted_Q3": 65.4842453825557
+      },
+      {
+        "Driver": "Alexander Albon",
+        "Team": "Williams",
+        "Position": 17,
+        "Predicted_Q3": 65.68861545669554
+      },
+      {
+        "Driver": "Arvid Lindblad",
+        "Team": "Racing Bulls",
+        "Position": 18,
+        "Predicted_Q3": 66.17419555006168
+      },
+      {
+        "Driver": "Sergio Perez",
+        "Team": "Cadillac",
+        "Position": 19,
+        "Predicted_Q3": 71.91485888170395
+      },
+      {
+        "Driver": "Lance Stroll",
+        "Team": "Aston Martin",
+        "Position": 20,
+        "Predicted_Q3": 71.9292992142317
+      },
+      {
+        "Driver": "Fernando Alonso",
+        "Team": "Aston Martin",
+        "Position": 21,
+        "Predicted_Q3": 71.94712646245466
+      },
+      {
+        "Driver": "Valtteri Bottas",
+        "Team": "Cadillac",
+        "Position": 22,
+        "Predicted_Q3": 72.00108890043403
+      }
+    ],
+    "actual_results": null
+  },
+  {
+    "race": "Austrian Grand Prix",
+    "year": 2026,
+    "round": 8,
+    "timestamp": "2026-06-21T15:09:41.988696",
+    "model_mae": 0.355,
+    "model_rmse": 0.471,
+    "model_r2": 0.998,
+    "predictions": [
+      {
+        "Driver": "Isack Hadjar",
+        "Team": "Red Bull Racing",
+        "Position": 1,
+        "Predicted_Q3": 65.0079345703125
+      },
+      {
+        "Driver": "Lando Norris",
+        "Team": "McLaren",
+        "Position": 2,
+        "Predicted_Q3": 65.01158142089844
+      },
+      {
+        "Driver": "Max Verstappen",
+        "Team": "Red Bull Racing",
+        "Position": 3,
+        "Predicted_Q3": 65.02597045898438
+      },
+      {
+        "Driver": "Oscar Piastri",
+        "Team": "McLaren",
+        "Position": 4,
+        "Predicted_Q3": 65.06134796142578
+      },
+      {
+        "Driver": "Lewis Hamilton",
+        "Team": "Ferrari",
+        "Position": 5,
+        "Predicted_Q3": 65.14755249023438
+      },
+      {
+        "Driver": "George Russell",
+        "Team": "Mercedes",
+        "Position": 6,
+        "Predicted_Q3": 65.15859985351562
+      },
+      {
+        "Driver": "Kimi Antonelli",
+        "Team": "Mercedes",
+        "Position": 7,
+        "Predicted_Q3": 65.18055725097656
+      },
+      {
+        "Driver": "Charles Leclerc",
+        "Team": "Ferrari",
+        "Position": 8,
+        "Predicted_Q3": 65.24457550048828
+      },
+      {
+        "Driver": "Gabriel Bortoleto",
+        "Team": "Audi",
+        "Position": 9,
+        "Predicted_Q3": 65.2654800415039
+      },
+      {
+        "Driver": "Pierre Gasly",
+        "Team": "Alpine",
+        "Position": 10,
+        "Predicted_Q3": 65.28825378417969
+      },
+      {
+        "Driver": "Franco Colapinto",
+        "Team": "Alpine",
+        "Position": 11,
+        "Predicted_Q3": 65.30609130859375
+      },
+      {
+        "Driver": "Arvid Lindblad",
+        "Team": "Racing Bulls",
+        "Position": 12,
+        "Predicted_Q3": 65.31188201904297
+      },
+      {
+        "Driver": "Carlos Sainz",
+        "Team": "Williams",
+        "Position": 13,
+        "Predicted_Q3": 65.31887817382812
+      },
+      {
+        "Driver": "Nico Hulkenberg",
+        "Team": "Audi",
+        "Position": 14,
+        "Predicted_Q3": 65.32223510742188
+      },
+      {
+        "Driver": "Liam Lawson",
+        "Team": "Racing Bulls",
+        "Position": 15,
+        "Predicted_Q3": 65.32447052001953
+      },
+      {
+        "Driver": "Esteban Ocon",
+        "Team": "Haas F1 Team",
+        "Position": 16,
+        "Predicted_Q3": 65.3255615234375
+      },
+      {
+        "Driver": "Oliver Bearman",
+        "Team": "Haas F1 Team",
+        "Position": 17,
+        "Predicted_Q3": 65.35215759277344
+      },
+      {
+        "Driver": "Alexander Albon",
+        "Team": "Williams",
+        "Position": 18,
+        "Predicted_Q3": 65.56935119628906
+      },
+      {
+        "Driver": "Lance Stroll",
+        "Team": "Aston Martin",
+        "Position": 19,
+        "Predicted_Q3": 71.88386535644531
+      },
+      {
+        "Driver": "Fernando Alonso",
+        "Team": "Aston Martin",
+        "Position": 20,
+        "Predicted_Q3": 71.90471649169922
+      },
+      {
+        "Driver": "Sergio Perez",
+        "Team": "Cadillac",
+        "Position": 21,
+        "Predicted_Q3": 72.01617431640625
+      },
+      {
+        "Driver": "Valtteri Bottas",
+        "Team": "Cadillac",
+        "Position": 22,
+        "Predicted_Q3": 72.10301208496094
+      }
+    ],
+    "actual_results": null
+  }
+]

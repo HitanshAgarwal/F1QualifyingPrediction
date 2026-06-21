@@ -3,149 +3,463 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F1 Prediction Results</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>F1 Qualifying Predictions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Jeko+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
     <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --red: #e8001d;
+            --black: #000000;
+            --white: #ffffff;
+            --grey-100: #f5f5f5;
+            --grey-200: #e0e0e0;
+            --grey-400: #9e9e9e;
+            --grey-600: #424242;
+            --grey-800: #121212;
+            --grey-850: #0d0d0d;
+        }
+
         body {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: var(--black);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
             min-height: 100vh;
-            padding: 20px 0;
+            padding: 48px 24px 80px;
         }
 
-        .position-1 { background-color: #ffd700; font-weight: bold; }
-        .position-2 { background-color: #c0c0c0; font-weight: bold; }
-        .position-3 { background-color: #cd7f32; font-weight: bold; }
-        .q3-position { background-color: #e8f5e9; }
-
-        .table-container {
-            max-width: 900px;
+        .page-wrap {
+            max-width: 880px;
             margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 50px rgba(0,0,0,0.3);
         }
 
+        /* Top nav */
+        .topnav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 48px;
+        }
+        .wordmark {
+            font-family: 'Jeko Sans', 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--red);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        .nav-link {
+            font-size: 0.8rem;
+            color: var(--grey-400);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.15s;
+        }
+        .nav-link:hover { color: var(--white); }
+        .nav-link .material-symbols-outlined { font-size: 16px; }
+
+        /* Race header */
         .race-header {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            text-align: center;
+            margin-bottom: 40px;
+        }
+        .race-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 10px;
+        }
+        .race-title {
+            font-family: 'Jeko Sans', 'Inter', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.05;
+            color: var(--white);
+        }
+        .race-sub {
+            font-size: 0.9rem;
+            color: var(--grey-400);
+            margin-top: 8px;
         }
 
-        .race-name {
-            font-size: 2rem;
-            font-weight: bold;
-            margin: 0;
+        /* Metrics row */
+        .metrics-row {
+            display: flex;
+            gap: 1px;
+            background: var(--grey-800);
+            border: 1px solid var(--grey-800);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 32px;
+        }
+        .metric {
+            flex: 1;
+            padding: 16px 20px;
+            background: var(--grey-850);
+        }
+        .metric-val {
+            font-family: 'Jeko Sans', 'Inter', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: -0.01em;
+        }
+        .metric-lbl {
+            font-size: 0.7rem;
+            color: var(--grey-600);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 4px;
         }
 
-        .race-location {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-top: 5px;
-        }
+        /* Table */
+        .table-wrap { overflow-x: auto; }
 
-        .race-date {
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        thead tr {
+            border-bottom: 1px solid var(--grey-800);
+        }
+        th {
+            padding: 10px 14px;
+            text-align: left;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--grey-600);
+        }
+        td {
+            padding: 13px 14px;
+            border-bottom: 1px solid var(--grey-800);
+            color: var(--white);
+            vertical-align: middle;
+        }
+        tbody tr:hover { background: var(--grey-850); }
+        tbody tr:last-child td { border-bottom: none; }
+
+        /* Position decoration */
+        .pos-cell {
+            font-family: 'Jeko Sans', 'Inter', sans-serif;
+            font-weight: 700;
             font-size: 1rem;
-            opacity: 0.8;
-            margin-top: 10px;
+            width: 40px;
+        }
+        .pos-1 { color: var(--white); }
+        .pos-2 { color: var(--grey-400); }
+        .pos-3 { color: var(--grey-400); }
+        .pos-other { color: var(--grey-600); }
+
+        /* Red left bar on top 3 */
+        .row-top td:first-child {
+            border-left: 2px solid var(--red);
+        }
+
+        .driver-name { font-weight: 500; }
+        .team-name { color: var(--grey-400); font-size: 0.85rem; }
+
+        .time-cell {
+            font-variant-numeric: tabular-nums;
+            font-size: 0.9rem;
+            color: var(--white);
+        }
+
+        /* Confidence bar */
+        .conf-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .conf-track {
+            flex: 1;
+            height: 2px;
+            background: var(--grey-800);
+            min-width: 48px;
+            position: relative;
+        }
+        .conf-fill {
+            height: 2px;
+            background: var(--grey-600);
+            /* high confidence (low std) → narrow fill, shown as gap */
+        }
+        .conf-label {
+            font-size: 0.75rem;
+            color: var(--grey-600);
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Note */
+        .note {
+            margin-top: 28px;
+            padding: 16px 0;
+            border-top: 1px solid var(--grey-800);
+            font-size: 0.8rem;
+            color: var(--grey-600);
+            line-height: 1.6;
+        }
+
+        /* Bottom actions */
+        .actions {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--red);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 12px 22px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.15s;
+            font-family: 'Inter', sans-serif;
+        }
+        .btn-primary:hover { opacity: 0.85; color: var(--white); }
+        .btn-primary .material-symbols-outlined { font-size: 16px; }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: transparent;
+            color: var(--grey-400);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 12px 0;
+            border: none;
+            cursor: pointer;
+            transition: color 0.15s;
+            font-family: 'Inter', sans-serif;
+        }
+        .btn-ghost:hover { color: var(--white); }
+        .btn-ghost .material-symbols-outlined { font-size: 16px; }
+
+        .share-url {
+            display: none;
+            margin-top: 12px;
+            padding: 10px 14px;
+            border: 1px solid var(--grey-800);
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--grey-400);
+            word-break: break-all;
         }
     </style>
 </head>
-<body class="container mt-5">
-    <div class="table-container">
-        <div class="race-header" id="raceHeader">
-            <div class="race-name" id="raceName">F1 2025 Qualifying Predictions</div>
-            <div class="race-location" id="raceLocation"></div>
-            <div class="race-date" id="raceDate"></div>
+<body>
+<div class="page-wrap">
+
+    <nav class="topnav">
+        <a href="/" class="wordmark">Formula 1</a>
+        <div class="nav-links">
+            <a href="/history" class="nav-link">
+                <span class="material-symbols-outlined">history</span>
+                History
+            </a>
+            <a href="/" class="nav-link">
+                <span class="material-symbols-outlined">refresh</span>
+                New prediction
+            </a>
         </div>
+    </nav>
 
-        <p class="text-center text-muted mb-4">Powered by Machine Learning with Enhanced Feature Engineering</p>
+    <div class="race-header">
+        <div class="race-label">Predicted qualifying order</div>
+        <div class="race-title" id="raceName">F1 Qualifying</div>
+        <div class="race-sub" id="raceSub"></div>
+    </div>
 
-        <table class="table table-hover mt-4" id="predictionsTable">
-            <thead class="table-dark">
-                <tr>
-                    <th>Position</th>
-                    <th>Driver</th>
-                    <th>Team</th>
-                    <th>Predicted Q3 Time</th>
-                </tr>
-            </thead>
-            <tbody id="predictionsBody">
-                <!-- Will be populated by JavaScript -->
-            </tbody>
-        </table>
-
-        <div class="alert alert-info mt-4">
-            <h5>How These Predictions Work:</h5>
-            <ul>
-                <li>Analyzes each driver's recent qualifying performance</li>
-                <li>Considers team car speed from past races</li>
-                <li>Uses machine learning trained on 2024-2025 data</li>
-                <li>Accounts for driver consistency and improvement trends</li>
-                <li>Note: Predictions are estimates based on past performance</li>
-            </ul>
+    <div class="metrics-row" id="metricsRow" style="display:none">
+        <div class="metric">
+            <div class="metric-val" id="metricMae">—</div>
+            <div class="metric-lbl">Model MAE</div>
         </div>
-
-        <div class="text-center mt-4">
-            <a href="/" class="btn btn-primary">New Prediction</a>
+        <div class="metric">
+            <div class="metric-val" id="metricRmse">—</div>
+            <div class="metric-lbl">RMSE</div>
+        </div>
+        <div class="metric">
+            <div class="metric-val" id="metricR2">—</div>
+            <div class="metric-lbl">R² Score</div>
         </div>
     </div>
 
-    <script>
-        // Load predictions from sessionStorage
-        const predictions = JSON.parse(sessionStorage.getItem('predictions') || '[]');
-        const raceInfo = JSON.parse(sessionStorage.getItem('race_info') || '{}');
+    <div class="table-wrap">
+        <table id="predictionsTable">
+            <thead>
+                <tr>
+                    <th>Pos</th>
+                    <th>Driver</th>
+                    <th>Team</th>
+                    <th>Predicted Q3</th>
+                    <th title="Prediction uncertainty (lower is more confident)">Uncertainty</th>
+                </tr>
+            </thead>
+            <tbody id="predictionsBody"></tbody>
+        </table>
+    </div>
 
-        // Display race information
-        if (raceInfo.name) {
-            document.getElementById('raceName').textContent = raceInfo.name;
+    <p class="note">
+        XGBoost trained on 3 seasons of qualifying data &mdash; features include driver EWM form, circuit-type normalization, team pace, Q3 participation rate, and session quality weighting. Uncertainty reflects spread across tree slices; narrower bars indicate higher confidence.
+    </p>
 
-            if (raceInfo.location) {
-                document.getElementById('raceLocation').textContent = raceInfo.location;
-            }
+    <div class="actions">
+        <button class="btn-primary" onclick="shareResults()">
+            <span class="material-symbols-outlined">link</span>
+            <span id="shareBtnLabel">Share</span>
+        </button>
+        <a href="/predict" class="btn-ghost">
+            <span class="material-symbols-outlined">replay</span>
+            Run again
+        </a>
+        <a href="/history" class="btn-ghost">
+            <span class="material-symbols-outlined">history</span>
+            History
+        </a>
+    </div>
+    <div class="share-url" id="shareUrl"></div>
 
-            if (raceInfo.date) {
-                const date = new Date(raceInfo.date);
-                document.getElementById('raceDate').textContent = date.toLocaleDateString('en-US', {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                });
-            }
+</div>
+
+<script>
+    const serverStored = {{ stored | tojson if stored else 'null' }};
+
+    let predictions = [];
+    let raceInfo    = {};
+    let metrics     = {};
+
+    if (serverStored) {
+        predictions = serverStored.predictions || [];
+        raceInfo    = serverStored.race_info   || {};
+        metrics     = serverStored.metrics     || {};
+    } else {
+        predictions = JSON.parse(sessionStorage.getItem('predictions') || '[]');
+        raceInfo    = JSON.parse(sessionStorage.getItem('race_info')   || '{}');
+        metrics     = JSON.parse(sessionStorage.getItem('metrics')     || '{}');
+    }
+
+    // Header
+    if (raceInfo.name) {
+        document.getElementById('raceName').textContent = raceInfo.name;
+        const parts = [];
+        if (raceInfo.location) parts.push(raceInfo.location);
+        if (raceInfo.date) {
+            const d = new Date(raceInfo.date);
+            parts.push(d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }));
         }
+        document.getElementById('raceSub').textContent = parts.join(' · ');
+    }
 
-        // Populate predictions table
-        const tbody = document.getElementById('predictionsBody');
-        predictions.forEach((prediction, index) => {
-            const row = document.createElement('tr');
+    // Metrics
+    if (metrics.mae !== undefined) {
+        document.getElementById('metricMae').textContent  = `±${metrics.mae.toFixed(3)}s`;
+        document.getElementById('metricRmse').textContent = `${metrics.rmse.toFixed(3)}s`;
+        document.getElementById('metricR2').textContent   = metrics.r2.toFixed(3);
+        document.getElementById('metricsRow').style.display = 'flex';
+    }
 
-            // Add position-based classes
-            let rowClass = '';
-            if (prediction.Position === 1) rowClass = 'position-1';
-            else if (prediction.Position === 2) rowClass = 'position-2';
-            else if (prediction.Position === 3) rowClass = 'position-3';
-            else if (prediction.Position <= 10) rowClass = 'q3-position';
+    // Table
+    const maxStd = Math.max(...predictions.map(p => p.Confidence_std || 0), 0.001);
 
-            row.className = rowClass;
+    function formatTime(sec) {
+        if (sec == null) return '—';
+        const m = Math.floor(sec / 60);
+        const s = (sec % 60).toFixed(3).padStart(6, '0');
+        return m > 0 ? `${m}:${s}` : `${s}s`;
+    }
 
-            row.innerHTML = `
-                <td><strong>${prediction.Position}</strong></td>
-                <td>${prediction.Driver}</td>
-                <td>${prediction.Team}</td>
-                <td>${prediction.Predicted_Q3.toFixed(3)}s</td>
-            `;
+    const tbody = document.getElementById('predictionsBody');
 
-            tbody.appendChild(row);
+    predictions.forEach(p => {
+        const row   = document.createElement('tr');
+        const pos   = p.Position;
+        const isTop = pos <= 3;
+        if (isTop) row.classList.add('row-top');
+
+        const posClass = pos === 1 ? 'pos-1' : pos === 2 ? 'pos-2' : pos === 3 ? 'pos-3' : 'pos-other';
+
+        const std    = p.Confidence_std || 0;
+        const barPct = maxStd > 0 ? Math.round((std / maxStd) * 100) : 0;
+
+        row.innerHTML = `
+            <td class="pos-cell ${posClass}">${pos}</td>
+            <td><span class="driver-name">${p.Driver}</span></td>
+            <td><span class="team-name">${p.Team}</span></td>
+            <td class="time-cell">${formatTime(p.Predicted_Q3)}</td>
+            <td>
+                <div class="conf-wrap">
+                    <div class="conf-track"><div class="conf-fill" style="width:${barPct}%"></div></div>
+                    <span class="conf-label">±${std.toFixed(3)}s</span>
+                </div>
+            </td>
+        `;
+        tbody.appendChild(row);
+    });
+
+    if (predictions.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" style="padding:32px 14px;color:#424242;">No predictions available. <a href="/predict" style="color:#e8001d;text-decoration:none;">Run a prediction.</a></td></tr>';
+    }
+
+    // Share
+    async function shareResults() {
+        const btn      = document.getElementById('shareBtnLabel');
+        const urlBox   = document.getElementById('shareUrl');
+        const existingId = new URLSearchParams(window.location.search).get('id');
+
+        if (existingId) { copyUrl(window.location.href, btn, urlBox); return; }
+
+        try {
+            btn.textContent = 'Saving...';
+            const res   = await fetch('/save_result', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ predictions, race_info: raceInfo, metrics }),
+            });
+            const { id }  = await res.json();
+            const shareUrl = `${window.location.origin}/results?id=${id}`;
+            window.history.replaceState({}, '', `/results?id=${id}`);
+            copyUrl(shareUrl, btn, urlBox);
+        } catch {
+            btn.textContent = 'Failed';
+            setTimeout(() => { btn.textContent = 'Share'; }, 2000);
+        }
+    }
+
+    function copyUrl(url, btn, urlBox) {
+        navigator.clipboard.writeText(url).then(() => {
+            btn.textContent = 'Copied!';
+            urlBox.textContent = url;
+            urlBox.style.display = 'block';
+            setTimeout(() => { btn.textContent = 'Share'; }, 2500);
         });
-
-        // If no predictions, show fallback message
-        if (predictions.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="4" class="text-center">No predictions available. Please run the prediction again.</td></tr>';
-        }
-    </script>
+    }
+</script>
 </body>
 </html>
